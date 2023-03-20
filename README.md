@@ -31,3 +31,8 @@ Make:
 ```bash
 sudo apt-get install -y make
 ```
+
+Bison:
+```bash
+sudo apt install bison
+```
