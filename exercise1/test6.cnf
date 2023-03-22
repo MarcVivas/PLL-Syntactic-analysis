@@ -1,0 +1,4 @@
+c Error expected: Lexycal error. (All lines from 3 to 4)
+p cnf 4 2
+a -2 0
+1 2 4 1 0

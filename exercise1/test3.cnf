@@ -1,0 +1,2 @@
+c Expected error: You cannot write a file with 0 variables and/or clauses (Lines: 2)
+p cnf 0 0
