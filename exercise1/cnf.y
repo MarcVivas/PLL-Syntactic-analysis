@@ -11,6 +11,7 @@ extern int yylex(void);
 extern FILE *yyin;
 void yyerror (char const *);
 void printClause();
+void handleClauses();
 
 std::vector<int> literals;
 int totalClauses, totalVariables;
@@ -30,60 +31,62 @@ int clausesCounter = 0;
 %token P CNF END_OF_CLAUSE
 
 %type <value> literal
+
+
 %%
 
 cnf_file: {/* empty */}
+        | newlines header clauses
         | header clauses
-        | error '\n' {yyerrok;}
         ;
 
-header: P CNF INT INT '\n'
+header: P CNF INT INT newlines
         {
           if($3 <= 0 || $4 <= 0){
             yyerror("The number of variables and clauses must be > 0");
-            yyerrok;
           }
           else{
             totalClauses = $4;
             totalVariables = $3;
           }
         }
+       | error newlines {yyerrok;}
+
   ;
 
-      ;
-
-clauses: {/* empty */}
-       | clauses clause '\n'
+clauses:
+       | clauses clause
+       | error END_OF_CLAUSE {yyerrok;}
        ;
 
-clause: list_literals END_OF_CLAUSE {
-                                      clausesCounter++;
-                                      if(clausesCounter > totalClauses){
-                                        yyerror("Exceeded the total number of clauses");
-                                        yyerrok;
-                                      }
-                                      else{
-                                        printClause();
-                                      }
-                                    }
-       ;
+clause: list_literals newlines END_OF_CLAUSE newlines	{handleClauses();}
+	| list_literals newlines END_OF_CLAUSE	{handleClauses();}
+	| list_literals END_OF_CLAUSE newlines	{handleClauses();}
+	| list_literals END_OF_CLAUSE	{handleClauses();}
+                                    ;
 
-list_literals:
+list_literals: literal
+        | list_literals newlines literal
         | list_literals literal
         ;
 
-literal: INT              {
-                           if($1 < -totalVariables || $1 > totalVariables){
-                              std::ostringstream oss;
-                              oss << "The variables must be in range of (Excluding 0) [" << -totalVariables << ", " << totalVariables << "]";
-                              literals.clear();
-                              yyerror(oss.str().c_str());
-                              yyerrok;
-                            } else{
-                              literals.push_back($1);
-                            }
+literal: INT     	{
+				 if($1 < -totalVariables || $1 > totalVariables){
+                                     std::ostringstream oss;
+                                     oss << "The variables must be in range of (Excluding 0) [" << -totalVariables << ", " << totalVariables << "]";
+                                     literals.clear();
+                                     yyerror(oss.str().c_str());
+                                 }
+                                 else{
+                                     literals.push_back($1);
+				 }
+
                           }
-       ;
+;
+
+newlines: '\n'
+	| newlines '\n'
+	;
 
 %%
 
@@ -93,6 +96,15 @@ void yyerror (char const *s){
   std::cerr << "Error at line " << nlin << ": " << s << '\n';
 }
 
+void handleClauses(){
+ 	clausesCounter++;
+	if(clausesCounter > totalClauses){
+		yyerror("Exceeded the total number of clauses");
+	}
+	else{
+		printClause();
+	}
+}
 
 void printClause(){
   if(literals.size() == 0){return;}
@@ -129,68 +141,4 @@ int main(int argc, char **argv){
           return(1);
         }
     }
-
 }
-/*
-%{
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-extern FILE *yyin;
-extern int line_number;
-extern int yylex(void);
-void yyerror (char const *);
-%}
-
-%union{
-  int value;
-	}
-
-%token <value> INT
-%token P C ZERO LIT CNF
-
-%start start
-%type <value> start file cnf clauses clause
-%%
-
-start:
-    file { printf("File parsed successfully\n"); }
-    | error { fprintf(stderr, "Error: syntax error on line %d\n", line_number); exit(EXIT_FAILURE); }
-
-file:
-    cnf clauses ZERO {  }
-
-cnf:
-    CNF LIT LIT {}
-
-clauses:
-    clauses clause { sprintf($$, "%s%s", $1, $2); }
-    | clause { $$ = $1; }
-
-clause:
-    LIT { sprintf($$, ""); }
-    | '-' LIT { sprintf($$, ""); }
-
-%%
-
-int main(int argc, char **argv) {
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s file.cnf\n", argv[0]);
-        return EXIT_FAILURE;
-    }
-
-    FILE *fp = fopen(argv[1], "r");
-    if (!fp) {
-        perror(argv[1]);
-        return EXIT_FAILURE;
-    }
-
-    yyin = fp;
-
-    yyparse();
-
-    fclose(fp);
-
-    return EXIT_SUCCESS;
-}
-*/

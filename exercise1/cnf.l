@@ -16,7 +16,7 @@
 [ \t]+                           ; /* Ignore tabs and spaces */
 
 
-^c.*\n                       				nlin++; /* Ignore comments */
+^c.*\n                       		 nlin++; /* Ignore comments */
 
 
 
@@ -27,10 +27,9 @@ p                                return P;   /* 'p' keyword */
 "cnf"                            return CNF;  /* 'cnf' keyword*/
 
 
--?[1-9][0-9]?+                       {  /* Integers*/
-
+-?[1-9][0-9]?+                 {  /* Integers*/
                                   yylval.value=atoi(yytext);
-                               	 	return INT;
+                               	  return INT;
                                }
 
 
@@ -41,7 +40,7 @@ p                                return P;   /* 'p' keyword */
 \n                                {
                                     /* Count new lines */
                                     nlin++;
-																		return '\n';
+									return '\n';
                                   }
 
 

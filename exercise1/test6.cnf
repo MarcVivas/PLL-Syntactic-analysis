@@ -1,4 +1,9 @@
-c Error expected: Lexycal error. (All lines from 3 to 4)
-p cnf 4 2
+c Error expected: Lexical error. (Lines: 3 and 4)
+p cnf 4 4
 a -2 0
+
+
 1 2 4 1 0
+-1 -4 0
+1 4 0
+-1 -4  4      4  0

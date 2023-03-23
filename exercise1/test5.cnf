@@ -1,4 +1,4 @@
-c Error expected: Lexycal error. (All lines from 2 to 8)
+c Error expected: Lexical error. The header is wrong so the full file is wrong. (All lines from 2 to 9)
 po conf 4 b
 -1 -2 0
 a 2 0

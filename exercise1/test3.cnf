@@ -1,2 +1,4 @@
-c Expected error: You cannot write a file with 0 variables and/or clauses (Lines: 2)
+c Expected error: You cannot write a file with 0 variables and/or clauses (Lines: 2, 3, 4)
 p cnf 0 0
+1 2 0 4 4 0
+1 22 3 0
