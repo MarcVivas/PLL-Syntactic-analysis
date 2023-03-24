@@ -1,0 +1,12 @@
+// Test assignment and register usage
+a = 3;
+b = 4;
+c = a + b;
+c * 2;
+a = c / 2;
+a;
+b;
+c;
+
+a = c;
+a;

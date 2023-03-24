@@ -1,0 +1,11 @@
+// Test invalid expressions
+1 &&;
+aguacate;
+2 * (3 + );
+?;
+?;
+
+// Correct expressions
++3;
+-4;
+-4 + 3;

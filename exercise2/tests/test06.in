@@ -1,0 +1,12 @@
+// Assignacío de valors
+a = 2;
+b = -3;
+// Expressio condicional
+(a * -b -2 >= 0 && b < 0) ? c = a+b : c = b;
+// Avaluacío d’expressions aritmetiques
+a-b;
+c*2;
+// Expressio condicional
+(c %2 == 0 && a - b < 0) ?
+d = 1 :
+d = -1;

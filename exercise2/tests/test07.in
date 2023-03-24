@@ -1,0 +1,35 @@
+// Expected 5
+a = 5;
+
+// Expected 3
+b = 3;
+
+// Expected -6
+c = ~a;
+
+// Expected 1
+d = a & b;
+
+// Expected 7
+e = a | b;
+
+// Expected 6
+f = a ^ b;
+
+// Expected 20
+g = a << 2;
+
+// Expected 2
+h = a >> 1;
+
+// Expected 4
+i = ~b & a;
+
+// Expected 6
+j = e ^ d;
+
+// Expected -1
+k = c >> 3;
+
+// Expected 3
+l = d << 1 | b;
