@@ -1,0 +1,6 @@
+(p1 v p2) ^
+(!p1 v !p2) ^
+(p3 v p4) ^
+(!p1 v !p3)
+Error at line 8: Exceeded the total number of clauses
+Error at line 9: Exceeded the total number of clauses

@@ -1,0 +1,2 @@
+(p1 v p2 v !p3 v p4 v p5 v p6 v p7 v !p8 v !p9 v p10) ^
+(!p2 v p3 v p1 v p4 v p5 v p6 v p7 v p8 v p9 v p10)

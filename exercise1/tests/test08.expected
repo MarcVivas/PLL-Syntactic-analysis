@@ -1,0 +1,6 @@
+Error at line 3: syntax error
+Error at line 4: syntax error
+(p1 v p2 v p4 v p1) ^
+(!p1 v !p4) ^
+(p1 v p4) ^
+(!p1 v !p4 v p4 v p4)

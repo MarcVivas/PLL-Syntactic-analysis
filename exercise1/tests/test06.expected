@@ -1,0 +1,6 @@
+(p1 v p2) ^
+(!p1 v !p2) ^
+Error at line 5: The variables must be in range of (Excluding 0) [-3, 3]
+Error at line 6: The variables must be in range of (Excluding 0) [-3, 3]
+(!p1 v !p3) ^
+Error at line 8: The variables must be in range of (Excluding 0) [-3, 3]
