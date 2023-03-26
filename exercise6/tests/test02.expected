@@ -1,0 +1,19 @@
+Start states: { ->q0 }
+Accepting states: { q1-> } { q6-> }
+Intermediate states: { q2 q3 } { q4 } { q5 }
+Alphabet: a b
+Transitions:
+{ ->q0 } ... { q1-> } [symbol="a"];
+{ ->q0 } ... { q4 } [symbol="b"];
+{ q1-> } ... { q4 } [symbol="a"];
+{ q1-> } ... { q4 } [symbol="b"];
+{ q2 q3 } ... { q2 q3 } [symbol="a"];
+{ q2 q3 } ... { q2 q3 } [symbol="b"];
+{ q4 } ... { q5 } [symbol="a"];
+{ q4 } ... { q5 } [symbol="b"];
+{ q5 } ... { q2 q3 } [symbol="a"];
+{ q5 } ... { q6-> } [symbol="b"];
+{ q6-> } ... { q6-> } [symbol="a"];
+{ q6-> } ... { q5 } [symbol="b"];
+
+

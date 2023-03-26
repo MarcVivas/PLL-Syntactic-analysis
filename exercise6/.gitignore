@@ -1,0 +1,5 @@
+automata.output
+automata.tab.c
+automata.tab.h
+lex.yy.c
+automata
