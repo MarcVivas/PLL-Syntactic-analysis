@@ -2,7 +2,7 @@
 ALPHABET => a, b <=
 
 // States definition
-STATES =>  ->q0, q1->, q2, q4, q5, q6->, q3 <=   // ->q4 is an initial state && q2-> q3-> are final states
+STATES =>  ->q0, q1->, q2, q4, q5, q6->, q3 <=   // ->q0 is an initial state && q6-> q1-> are final states
 
 // Transitions definitions
 TRANSITIONS =>

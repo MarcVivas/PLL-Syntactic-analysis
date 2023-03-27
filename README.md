@@ -50,7 +50,7 @@ sudo apt install bison
 ```bash
 python3 test.py
 ```
->> Note: It is not necessary to compile the Flex and Bison programs to run the script.
+> Note: It is not necessary to compile the Flex and Bison programs to run the script.
 
 
 ## Exercise 2
@@ -65,9 +65,27 @@ python3 test.py
 ```bash
 python3 test.py
 ```
->> Note: It is not necessary to compile the Flex and Bison programs to run the script. 
+> Note: It is not necessary to compile the Flex and Bison programs to run the script. 
 
 ## Exercise 6
+We have done exercise `6.1`.
+
+### Program structure
+This section provides a brief overview of the components of the program and their respective responsibilities:
+
+1. `automata.l`: `Flex` program that performs lexical analysis of the proposed language.
+2. `automata.y`: `Bison` program that syntactically analyzes the proposed language.
+3. `AutomataBuilder.cpp`: Class that generates instances of `Automata`.
+4. `Automata.cpp`: Class that represents an automata.
+
+During the parsing process, `AutomataBuilder` builds an automata from the input, and once parsing is complete, `Automata` minimizes the generated automata.
+
+### Tests
+To facilitate testing, a Python script named `test.py` was created. Running the script with the next command will automatically execute all the test cases and check their results.
+```bash
+python3 test.py
+```
+> Note: It is not necessary to compile the Flex and Bison programs to run the script.
 
 ### Created language
 The language described below defines a syntax for describing a finite automaton(deterministic and non-deterministic). It includes the definition of an alphabet, a set of states, and the transitions between those states based on the letters in the alphabet. The language allows for the designation of multiple initial states and one or more final states. The purpose of this language is to provide a way to specify a finite automaton and to implement a lexical analyzer that can identify the sequence of tokens in the input based on the defined automaton.
@@ -154,11 +172,4 @@ This automata accepts inputs of symbols a, b, c, d, e, f, g, h, i and goes throu
 - From the initial state `q0` to the intermediate states `t3` and/or `t44` after reading symbol `b`
 - From the intermediate state `t3` to the final state `k2` and/or the intermediate state `q1` after reading symbol `a`.
 
-### Automata minimization
-
-### Tests
-To facilitate testing, a Python script named `test.py` was created. Running the script with the next command will automatically execute all the test cases and check their results.
-```bash
-python3 test.py
-```
->> Note: It is not necessary to compile the Flex and Bison programs to run the script. 
+> Note: You can write more than one automaton in the same file

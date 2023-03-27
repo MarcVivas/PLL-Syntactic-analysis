@@ -1,0 +1,10 @@
+Start states: { ->q0 }
+Accepting states: { q1-> }
+Intermediate states:
+Alphabet: a b
+Transitions:
+{ ->q0 } ... { ->q0 } [symbol="a"];
+{ ->q0 } ... { q1-> } [symbol="b"];
+{ q1-> } ... { q1-> } [symbol="a"];
+{ q1-> } ... { q1-> } [symbol="b"];
+

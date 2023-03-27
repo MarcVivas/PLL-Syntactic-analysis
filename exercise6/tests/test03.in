@@ -1,0 +1,13 @@
+// Alphabet definition
+ALPHABET => a, b <=
+
+// States definition
+STATES =>  ->q0, q1-> <=   // q0 is an initial state and q1 is an accepting state
+
+// Transitions definitions
+TRANSITIONS =>
+->q0[a]...->q0;
+->q0[b]...q1->;
+q1->[a]...q1->;
+q1->[b]...q1->;
+<=

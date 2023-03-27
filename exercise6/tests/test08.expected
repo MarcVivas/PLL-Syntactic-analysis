@@ -1,0 +1,43 @@
+Start states: { ->q4 }
+Accepting states: { q2-> q3-> }
+Intermediate states: { q1 } { q5 } { q6 }
+Alphabet: 0 1
+Transitions:
+{ ->q4 } ... { q1 } [symbol="0"];
+{ ->q4 } ... { q5 } [symbol="1"];
+{ q1 } ... { q2-> q3-> } [symbol="0"];
+{ q1 } ... { q1 } [symbol="1"];
+{ q2-> q3-> } ... { q2-> q3-> } [symbol="0"];
+{ q2-> q3-> } ... { q2-> q3-> } [symbol="1"];
+{ q5 } ... { q6 } [symbol="0"];
+{ q5 } ... { q5 } [symbol="1"];
+{ q6 } ... { q2-> q3-> } [symbol="0"];
+{ q6 } ... { q5 } [symbol="1"];
+
+Start states: { ->q0 }
+Accepting states: { q1-> } { q6-> }
+Intermediate states: { q2 q3 } { q4 } { q5 }
+Alphabet: a b
+Transitions:
+{ ->q0 } ... { q1-> } [symbol="a"];
+{ ->q0 } ... { q4 } [symbol="b"];
+{ q1-> } ... { q4 } [symbol="a"];
+{ q1-> } ... { q4 } [symbol="b"];
+{ q2 q3 } ... { q2 q3 } [symbol="a"];
+{ q2 q3 } ... { q2 q3 } [symbol="b"];
+{ q4 } ... { q5 } [symbol="a"];
+{ q4 } ... { q5 } [symbol="b"];
+{ q5 } ... { q2 q3 } [symbol="a"];
+{ q5 } ... { q6-> } [symbol="b"];
+{ q6-> } ... { q6-> } [symbol="a"];
+{ q6-> } ... { q5 } [symbol="b"];
+
+Start states: { ->q0 }
+Accepting states: { q1-> }
+Intermediate states:
+Alphabet: a b
+Transitions:
+{ ->q0 } ... { ->q0 } [symbol="a"];
+{ ->q0 } ... { q1-> } [symbol="b"];
+{ q1-> } ... { q1-> } [symbol="a"];
+{ q1-> } ... { q1-> } [symbol="b"];

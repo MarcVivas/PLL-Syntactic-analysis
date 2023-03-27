@@ -46,18 +46,17 @@ AutomataBuilder automataBuilder;
 %%
 
 automata_file   : {;}
-       		    | automata
+       		    | automata_file automata
        		    ;
 
 automata:     alphabet_definition states_definition transitions_definition {
-                                                                                Automata aut = automataBuilder.build();
-                                                                                aut.minimize();
-                                                                                std::cout << aut;
+                                                                                std::cout << automataBuilder.build().minimize() << std::endl;
                                                                                 automataBuilder.resetBuilder();
                                                                            }
-              ;
+            ;
 
 alphabet_definition:    ALPHABET START_OF_DEFINITION symbols END_OF_DEFINITION
+                        | error END_OF_DEFINITION {yyerrok;}
                         ;
 
 symbols:    symbol
@@ -68,6 +67,7 @@ symbol:     ALPHABET_SYMBOL {automataBuilder.add_alphabet_letter($1);}
             ;
 
 states_definition:  STATES START_OF_DEFINITION states END_OF_DEFINITION
+                    | error END_OF_DEFINITION   {yyerrok;}
                     ;
 
 states: state

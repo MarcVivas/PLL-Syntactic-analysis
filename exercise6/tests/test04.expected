@@ -1,0 +1,16 @@
+Error at line 1: syntax error
+Error at line 5: syntax error
+Transition error: Letter a is not in the alphabet.
+Error at line 9: syntax error
+Transition error: Letter a is not in the alphabet.
+Transition error: Letter b is not in the alphabet.
+No accepting states specified.
+Start states: { ->q0 }
+Accepting states:
+Intermediate states:
+Alphabet:
+Transitions:
+
+
+
+

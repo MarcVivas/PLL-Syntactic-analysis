@@ -8,14 +8,17 @@
 void AutomataBuilder::add_transition(std::string src_state, char input, std::string dst_state)  {
     // Check if the source and destination states exist
     if (automaton.get_all_states().find(src_state) == automaton.get_all_states().end()) {
-        throw std::invalid_argument("Source state does not exist.");
+        std::cerr << "Transition error: Source state "<< src_state <<" does not exist.\n";
+        return;
     }
     if (automaton.get_all_states().find(dst_state) == automaton.get_all_states().end()) {
-        throw std::invalid_argument("Destination state does not exist.");
+        std::cerr << "Transition error: Destination state " << dst_state << " does not exist.\n";
+        return;
     }
     // Check if the input is in the alphabet
     if (automaton.get_alphabet()->find(input) == automaton.get_alphabet()->end()) {
-        throw std::invalid_argument("Input is not in the alphabet.");
+        std::cerr << "Transition error: Letter " << input << " is not in the alphabet.\n";
+        return;
     }
     automaton.add_transition(src_state, input, dst_state);}
 
@@ -26,10 +29,10 @@ void AutomataBuilder::add_accepting_state(std::string state) {
 Automata AutomataBuilder::build() {
     // Check if there is at least one start state and one accepting state
     if (automaton.get_start_states()->empty()) {
-        throw std::invalid_argument("No start states specified.");
+        std::cerr << "No start states specified.\n";
     }
     if (automaton.get_accepting_states()->empty()) {
-        throw std::invalid_argument("No accepting states specified.");
+        std::cerr << "No accepting states specified.\n";
     }
     return this->automaton;
 }

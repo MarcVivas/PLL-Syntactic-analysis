@@ -1,0 +1,12 @@
+ALPHABET => => b, a <=    // Error expected
+
+
+// States definition
+STATES =>  ->q0, STATES <=   // Error expected
+
+TRANSITIONS =>
+->q0[a]...->q0  // Error expected missing ';'
+->q0[b]...q1->;
+q1->[a]...q1->;
+q1->[b]...q1->;
+<=

@@ -27,7 +27,7 @@ void Automata::add_intermediate_state(std::string state){
 /**
  * Minimize the automata
  */
-void Automata::minimize() {
+Automata& Automata::minimize() {
     // First, we need to create two partitions: one with accepting states and one with non-accepting states
     // We will use a queue to keep track of the partitions we need to split
 
@@ -57,6 +57,7 @@ void Automata::minimize() {
     // Update the automata
     this->update_automata(&equivalence_class);
 
+    return *this;
 }
 
 

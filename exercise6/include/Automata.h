@@ -20,7 +20,7 @@ public:
 
     void add_intermediate_state(std::string state);
 
-    void minimize();
+    Automata& minimize();
 
     friend std::ostream& operator<<(std::ostream& os, const Automata& automata);
 

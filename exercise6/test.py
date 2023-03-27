@@ -24,10 +24,6 @@ for file_name in sorted(os.listdir("tests")):
             print(f"Test {file_name[:-3]} failed 🇽:")
             print(f"Input:\n{input_str}")
             print("Character-by-character comparison:")
-            for i, (a, b) in enumerate(zip(result.strip(), expected_str.strip())):
-                if a != b:
-                    print(f"  Mismatch at position {i}: expected '{b}', got '{a}'")
-                    break
             print(f"Expected output:\n{expected_str}")
             print(f"Actual output:\n{result}")
             print()

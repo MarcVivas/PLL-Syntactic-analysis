@@ -1,0 +1,63 @@
+// Multiple automatas in one file
+
+
+
+// Alphabet definition
+ALPHABET => 0, 1 <=
+
+// States definition
+STATES =>  ->q4, q1, q5, q6, q2->, q3-> <=   // ->q4 is an initial state && q2-> q3-> are final states
+
+// Transitions definitions
+TRANSITIONS =>
+q1[1]...q1;
+q1[0]...q2->;
+q2->[0]...q3->;
+q2->[1]...q3->;
+q3->[0]...q3->;
+q3->[1]...q3->;
+->q4[0]...q1;
+->q4[1]...q5;
+q5[1]...q5;
+q5[0]...q6;
+q6[1]...q5;
+q6[0]...q3->;
+<=
+
+// Alphabet definition
+ALPHABET => a, b <=
+
+// States definition
+STATES =>  ->q0, q1->, q2, q4, q5, q6->, q3 <=   // ->q0 is an initial state && q6-> q1-> are final states
+
+// Transitions definitions
+TRANSITIONS =>
+->q0[a]...q1->;
+->q0[b]...q4;
+q1->[a]...q4;
+q1->[b]...q4;
+q2[a]...q3;
+q2[b]...q3;
+q3[a]...q3;
+q3[b]...q2;
+q4[a]...q5;
+q4[b]...q5;
+q5[a]...q2;
+q5[b]...q6->;
+q6->[a]...q6->;
+q6->[b]...q5;
+<=
+
+// Alphabet definition
+ALPHABET => a, b <=
+
+// States definition
+STATES =>  ->q0, q1-> <=   // q0 is an initial state and q1 is an accepting state
+
+// Transitions definitions
+TRANSITIONS =>
+->q0[a]...->q0;
+->q0[b]...q1->;
+q1->[a]...q1->;
+q1->[b]...q1->;
+<=
