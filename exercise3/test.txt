@@ -1,0 +1,7 @@
+!(A|B)
+A->B
+//COMENTARI
+!cvA
+A<->B
+P&Q<->(!R|(Q->T))
+A<>*B
