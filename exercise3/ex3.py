@@ -2,8 +2,7 @@ from src.ply.lex import lex
 import src.ply.lex as lex
 import src.ply.yacc as yacc
 
-tokens=("VARIABLE", "IMPLICATION", "DOUBLE_IMPLICATION", "CONJUNCTION", "DISJUNCTION", "NEGATION", "LPARENT", "RPARENT")
-literals=('(', ')')
+tokens=("VARIABLE", "IMPLICATION", "DOUBLE_IMPLICATION", "CONJUNCTION", "DISJUNCTION", "NEGATION", "LPARENT", "RPARENT", "COMMENT")
 
 # Ignored characters
 t_ignore = ' \t'
@@ -17,6 +16,7 @@ t_DISJUNCTION = r'\|'
 t_NEGATION = r'\!'
 t_LPARENT = r'\('
 t_RPARENT = r'\)'
+t_COMMENT = r"\/\/.*"
 
 # from lowest to highest precedence
 precedence=(
@@ -26,15 +26,10 @@ precedence=(
     ('right', 'NEGATION')
 )
 
-# Define a rule to match comments starting with "//"
-def t_COMMENT(t):
-    r"\/\/.*"
-    pass
-
 # Define a rule to handle newlines
 def t_newline(t):
     r"\n+"
-    t.lexer.lineno += len(t.value)
+    t.lexer.lineno += 1
 
 # Error handler for illegal characters
 def t_error(t):
@@ -43,11 +38,15 @@ def t_error(t):
 
 # Build the lexer
 lexer = lex.lex()
+lexer.lineno = 1
+
+def p_COMMENT(p):
+    "expression : COMMENT"
+    pass
 
 def p_expression(p):
     """
-    expression : '(' expression ')'
-        | expression CONJUNCTION expression
+    expression : expression CONJUNCTION expression
         | expression DISJUNCTION expression
     """
     p[0] = f"{p[1]}{p[2]}{p[3]}"
@@ -70,7 +69,7 @@ def p_expression_implication(p):
     '''
     expression : expression IMPLICATION expression
     '''
-    p[0] = f'({p[1]})|({p[3]})'
+    p[0] = f'!({p[1]})|{p[3]}'
 
 def p_expression_double_implication(p):
     '''
@@ -80,6 +79,8 @@ def p_expression_double_implication(p):
 
 #PANIC MODE ERROR HANDLING
 def p_error(p):
+    if p:
+        print("Syntax error at line", lexer.lineno)
     # Read ahead looking for a a new line'
     while True:
         tok = parser.token()             # Get the next token
@@ -102,3 +103,4 @@ with open('test.txt') as f:
         result = parser.parse(s)
         if result != None:
             print(s +" TRANSFORMED TO: "+result)
+       
