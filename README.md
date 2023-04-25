@@ -67,6 +67,46 @@ python3 test.py
 ```
 > Note: It is not necessary to compile the Flex and Bison programs to run the script. 
 
+## Exercise 3
+### Code explanation
+First que declare the tokens, the characters we need to ignore (the spaces and tabs), the matching rules for the
+tokens written as regexs and the precedences, written from lowest to highest.
+
+We defined a rule to handle the newlines and count them to later print it if there is any error aswell a function to 
+handle the possible illegal characters, printing it and the number of line.
+
+For the comment, if the program find a //, skips it. With this, the program will ignore the line and read the next one.
+
+For the expressions, we made a function for every token or a combination of tokens.
+For every expression except the implication and double implication, we return the same as we read as expression, but
+for the implication and double implication, we return the expression parsed without it.
+
+Finally, we handle the parse erros with a function with panic mode, printing the line we found the error and 
+passing to the next line.
+
+### Tests
+Running the script with the next command will automatically execute all the test cases and check their results.
+```bash
+python3 ex3.py
+```
+
+## Exercise 4
+### Code explanation
+For this exercise, we followed the same schema as the exercise 3, including more toknes, a literal for the comma and 
+diferent precedences.
+
+The error handlers and the functions for new line and comments are the same.
+
+In this case, the functions for the expressions will not make any type of parse, it will check the rule, and if the rule
+is true, it will pass, to the next line until it finish the test document, but if there is some error, the program will
+print the line saying it's incorrect.
+
+### Tests
+Running the script with the next command will automatically execute all the test cases and check their results.
+```bash
+python3 ex4.py
+```
+
 ## Exercise 6
 We have done exercise `6.1`.
 
