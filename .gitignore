@@ -1,27 +1,6 @@
-# Eclipse
-.classpath
-.project
-.settings/
+cnf.output
+cnf.tab.c
+cnf.tab.h
+lex.yy.c
+cnf
 
-# IntelliJ IDEA
-.idea/
-*.iml
-*.iws
-
-# Visual Studio Code
-.vscode/
-
-# Visual Studio
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# NetBeans
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml

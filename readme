@@ -1,0 +1,15 @@
+## Exercise 1
+### Considerations
+1. For an LL GRAMMAR file to be considered correct, it must be empty or contain lines with productions, separating the left and right side of each production by ":", and with the productions separated by "|". The end of the line is marked by a semicolon (";"). spaces, tabs, newlines etc are not taken into account, and you can add comments with  "//"
+2. You will be able to better understand the characteristics of the implementation by looking at the test files.
+
+### Tests
+1. There are `9` tests available that have been used to check the correctness of the exercise.
+2. Each test file contains a comment indicating whether the file is in the correct format or not.
+3. If the test file is not in the correct format, there is also a comment indicating in which lines the program should throw an error.
+4. If the test passes for an incorrect file, it means it detected the correct error.
+5. To facilitate testing, a Python script named `test.py` was created. Running the script with the next command will automatically execute all the test cases and check their results.
+```bash
+python3 test.py
+```
+> Note: It is not necessary to compile the Flex and Bison programs to run the script.
