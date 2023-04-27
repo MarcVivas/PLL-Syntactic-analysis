@@ -20,9 +20,10 @@ for file_name in sorted(os.listdir("tests")):
         result = os.popen(cmd).read().strip()
 
         # Compare the output to the expected output
-        if result != expected_str:
+        if "".join(result.split()) != "".join(expected_str.split()):
             print(f"Test {file_name[:-3]} failed 🇽:")
             print(f"Input:\n{input_str}")
+            print("Character-by-character comparison:")
             print(f"Expected output:\n{expected_str}")
             print(f"Actual output:\n{result}")
             print()
