@@ -47,3 +47,4 @@
 \n                                nlin++;
 
 
+.                     		 	    {return(yytext[0]);}  /*  Errors will be processed by the syntactic analyzer */
