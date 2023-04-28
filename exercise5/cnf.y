@@ -1,8 +1,7 @@
 %{
 
-#include<iostream>
-#include <vector>
-#include <sstream>
+#include<stdio.h>
+#include<stdbool.h>
 #include<ctype.h>
 #include <stdlib.h>
 #include <string.h>
@@ -68,7 +67,7 @@ word: TW     	{taula_t[actual-'A'][$1[0]-'a']=true;}
 /* Called by yyparse on error. */
 
 void yyerror (char const *s){
-  std::cerr << "Error at line " << nlin << ": " << s << '\n';
+    fprintf(stderr, "Error at line %d: %s\n", nlin, s);
 }
 
 void primers(char builder){
@@ -87,7 +86,7 @@ void primers(char builder){
 
 int main(int argc, char **argv){
   if (argc>2)
-    std::cerr << "Error, usage: " << argv[0] << " [file]\n";
+    fprintf(stderr, "Error, usage: %s [file]\n", argv[0]);
   else{
       if (argc==2)
           yyin = fopen( argv[1], "r" );
