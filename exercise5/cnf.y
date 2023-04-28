@@ -39,25 +39,27 @@ bool def[C]={false};
 %%
 
 ll_file: {/* empty */}
-        | clauses clause
-        | clause
+        | productions production
+        | production
         ;
 
-clauses: clauses clause
-	| clause
+productions: productions production
+	| production
        ;
 
-clause: builder pieces eoc	;
+production: builder words eop	
+	| error eop {yyerrok;}
+	;
 
-eoc: ';'	;
+eop: ';'	;
 
 builder: B		{def[$1[0]-'A']=true;actual=$1[0];};
 
-pieces: piece '|' pieces
-        | piece
+words: word '|' words
+        | word
         ;
 
-piece: TW     	{taula_t[actual-'A'][$1[0]-'a']=true;}
+word: TW     	{taula_t[actual-'A'][$1[0]-'a']=true;}
 	| BW	{taula_c[actual-'A'][$1[0]-'A']=true;}
 ;
 
