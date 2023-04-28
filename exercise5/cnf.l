@@ -26,12 +26,12 @@
 
 
 
-[a-z][a-zA-Z]*                            {  /* TW*/
+[a-z][a-zA-Z]*                            {  /* 'TW' keyword */
                                   yylval.word=yytext;
                                	  return TW;
                                }
                                
-[A-Z][a-zA-Z]*                            {  /* CON*/
+[A-Z][a-zA-Z]*                            {  /* 'BW' keyword */
                                   yylval.word=yytext;
                                	  return BW;
                                }                             
@@ -44,8 +44,6 @@
 
 
 
-\n                                ;
+\n                                nlin++;
 
 
-
-.                     		 	    {return(yytext[0]);}  /*  Errors will be processed by the syntactic analyzer */
