@@ -1,0 +1,7 @@
+// Errors on lines 2 and 6
+S  Ac | fA | B
+;
+B : b 
+;
+A  i | a | B 
+;
